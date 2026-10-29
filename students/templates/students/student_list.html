@@ -1,0 +1,14 @@
+{% extends 'students/base.html' %}
+{% block content %}
+<h1>Liste des etudiants ({{ students.count }})</h1>
+<form method='get'><input type='text' name='q' placeholder='Rechercher...'><button type='submit'>Chercher</button></form>
+<p><a href='/students/add/'>+ Ajouter un etudiant</a></p>
+<ul>
+{% for student in students %}
+<li><a href='/students/{{ student.id }}/'>{{ student.first_name }} {{ student.last_name }}</a> - {{ student.email }} - <a href='/students/{{ student.id }}/delete/'>Supprimer</a></li>
+{% empty %}
+<li>Aucun etudiant</li>
+{% endfor %}
+</ul>
+<a href='/'>Accueil</a>
+{% endblock %}
